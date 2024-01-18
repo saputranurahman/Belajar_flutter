@@ -1,6 +1,9 @@
+import 'package:fluter_pertama/coloumt_widget.dart';
+import 'package:fluter_pertama/latihan2.dart';
 import 'package:flutter/material.dart';
-import 'container_widget.dart';
-import 'container_nama.dart';
+// import 'coloumt_widget.dart';
+// import 'container_nama.dart';
+import 'rowcoloumt_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,29 +19,26 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-        title: const Text("Belajar"),
-        backgroundColor: Colors.blue,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.account_circle),
-            padding: EdgeInsets.only(right: 15),
-            
-            onPressed: () {
-              // Handle the search action
-              // You can navigate to a search page or show a search dialog, etc.
-              print('Search action pressed!');
-            },
-          ),
-        ],
-      ),
-        
+          title: const Text("Belajar"),
+          backgroundColor: Colors.blue,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.account_circle),
+              padding: EdgeInsets.only(right: 15),
+              onPressed: () {
+                // Handle the search action
+                // You can navigate to a search page or show a search dialog, etc.
+                print('Search action pressed!');
+              },
+            ),
+          ],
+        ),
         body: Container(
           height: double.infinity,
           width: double.infinity,
-          color: Colors.indigo,
-          child: ContainerNama(),
+          color: Colors.white,
+          child: Latihan(),
         ),
-        
       ),
     );
   }
