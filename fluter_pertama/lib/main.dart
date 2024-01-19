@@ -1,10 +1,14 @@
-import 'package:fluter_pertama/coloumt_widget.dart';
-import 'package:fluter_pertama/latihan2.dart';
+// import 'package:fluter_pertama/coloumt_widget.dart';
+// import 'package:fluter_pertama/latihan2.dart';
+// import 'package:fluter_pertama/listview.dart';
+import 'package:fluter_pertama/latihanlistview.dart';
 import 'package:flutter/material.dart';
 // import 'coloumt_widget.dart';
 // import 'container_nama.dart';
-import 'rowcoloumt_widget.dart';
-
+// import 'rowcoloumt_widget.dart';
+// import 'navigatorbar.dart';
+import 'listvie2.dart';
+// import 'listview3.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -37,7 +41,7 @@ class MyApp extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           color: Colors.white,
-          child: Latihan(),
+          child: LatihanView(),
         ),
       ),
     );

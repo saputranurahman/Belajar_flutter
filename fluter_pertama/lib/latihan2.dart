@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Latihan extends StatelessWidget {
-  const Latihan({Key? key}) : super(key: key);
-
+  const  Latihan({Key? key}) : super(key: key);
+ 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
