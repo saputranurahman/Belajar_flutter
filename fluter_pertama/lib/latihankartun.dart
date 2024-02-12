@@ -1,4 +1,11 @@
+import 'dart:js';
+
+import 'package:fluter_pertama/latihanlistview.dart';
+import 'package:fluter_pertama/login_screen.dart';
+import 'package:fluter_pertama/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'main.dart';
 
 class LatihanKartun extends StatelessWidget {
   LatihanKartun({Key? key}) : super(key: key);
@@ -46,6 +53,20 @@ class LatihanKartun extends StatelessWidget {
   var data = 1;
   var color = 0;
 
+   void _logout(BuildContext context) async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+  
+    // Hapus token dan data pengguna dari penyimpanan lokal
+    localStorage.remove('token');
+    localStorage.remove('user');
+  
+    // Navigasi ke halaman login (Anda dapat menggantinya sesuai kebutuhan)
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +77,42 @@ class LatihanKartun extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == 'lihatProfile') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ),
+                );
+                print('Lihat Profile selected');
+              } else if (value == 'logout') {
+                _logout(context); // Panggil fungsi logout
+                print('Logout selected');
+              }
+            },
+            itemBuilder: (BuildContext context) {
+              return {'lihatProfile', 'logout'}.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Row(
+                    children: [
+                      choice == 'lihatProfile'
+                          ? Icon(Icons.person)
+                          : Icon(Icons.logout),
+                      SizedBox(width: 8),
+                      Text(choice == 'lihatProfile'
+                          ? 'Lihat Profile'
+                          : 'Logout'),
+                    ],
+                  ),
+                );
+              }).toList();
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -215,7 +272,8 @@ class DetailPemeran extends StatelessWidget {
   final String nama;
   final String gambar;
   final String deskripsi;
-  DetailPemeran({required this.nama, required this.gambar, required this.deskripsi});
+  DetailPemeran(
+      {required this.nama, required this.gambar, required this.deskripsi});
 
   @override
   Widget build(BuildContext context) {
